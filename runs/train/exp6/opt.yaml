@@ -1,4 +1,4 @@
-weights: runs\train\exp\weights\best.pt
+weights: runs\train\exp4\weights\best.pt
 cfg: ''
 data: data\my_face_train_1.yaml
 hyp: data\hyps\hyp.scratch.yaml
@@ -35,4 +35,4 @@ entity: null
 upload_dataset: false
 bbox_interval: -1
 artifact_alias: latest
-save_dir: runs\train\exp3
+save_dir: runs\train\exp6
