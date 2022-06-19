@@ -1,6 +1,6 @@
-weights: runs\train\exp\weights\best.pt
+weights: runs\train\my_face_3\weights\best.pt
 cfg: ''
-data: data\my_robber_train_0.yaml
+data: data\my_face_train_4.yaml
 hyp: data\hyps\hyp.scratch.yaml
 epochs: 300
 batch_size: 1

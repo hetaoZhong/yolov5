@@ -1,12 +1,12 @@
-weights: runs/train/my_robber_0/weights/last.pt
+weights: runs\train\exp\weights\best.pt
 cfg: ''
-data: data\my_robber_train_0.yaml
+data: data\my_pointer_train_0.yaml
 hyp: data\hyps\hyp.scratch.yaml
 epochs: 300
 batch_size: 1
 imgsz: 640
 rect: false
-resume: true
+resume: false
 nosave: false
 noval: false
 noautoanchor: false

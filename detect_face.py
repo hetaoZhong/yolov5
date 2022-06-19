@@ -47,7 +47,7 @@ from utils.plots import Annotator, colors, save_one_box
 from utils.torch_utils import select_device, time_sync
 
 detect_result = ""
-detect_rate = 0.85
+detect_rate = 0.60
 
 
 @torch.no_grad()
@@ -82,7 +82,7 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
     global detect_rate
     # 每次RUN之前，detect_result的值要重制为空,默认的比率要设置为0.85
     detect_result = ""
-    detect_rate = 0.85
+    detect_rate = 0.60
     source = str(source)
     save_img = not nosave and not source.endswith('.txt')  # save inference images
     is_file = Path(source).suffix[1:] in (IMG_FORMATS + VID_FORMATS)
@@ -183,7 +183,7 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
                             c1, c2 = (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3]))
                             detect_rate = conf.float()
                             detect_result = str(c1[0]) + "," + str(c1[1]) + "," + str(c2[0]) + "," + str(
-                                c2[1]) + "," + str(detect_rate)
+                                c2[1]) + "," + str(float(detect_rate))
                             print(str(c) + "__detect_result::" + detect_result)
                         annotator.box_label(xyxy, label, color=colors(c, True))
                         if save_crop:
@@ -227,11 +227,14 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
         strip_optimizer(weights)  # update model (to fix SourceChangeWarning)
 
 
-def parse_opt(uname):
+def parse_opt(uname, weight_path):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'runs/train/my_face_3/weights/best.pt',help='model path(s)')
+    # print(type(ROOT))
+    parser.add_argument('--weights', nargs='+', type=str,
+                        default=ROOT / Path('runs/train/' + weight_path + '/weights/best.pt'), help='model path(s)')
     # parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='file/dir/URL/glob, 0 for webcam')
-    parser.add_argument('--source', type=str, default='E:\\YOLO_TEMP_FILE\\'+uname, help='file/dir/URL/glob, 0 for webcam')
+    parser.add_argument('--source', type=str, default='E:\\YOLO_TEMP_FILE\\' + uname,
+                        help='file/dir/URL/glob, 0 for webcam')
     parser.add_argument('--data', type=str, default=ROOT / 'data/coco128.yaml', help='(optional) dataset.yaml path')
     parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[640], help='inference size h,w')
     parser.add_argument('--conf-thres', type=float, default=0.25, help='confidence threshold')
