@@ -4,6 +4,7 @@ import socket
 import detect_face
 import detect_robber_npc
 import detect_pointer
+import detect_wenzi
 import time
 import random
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -116,6 +117,20 @@ class Resquest(BaseHTTPRequestHandler):
             opt = detect_pointer.parse_opt(uname)
             detect_pointer.run(**vars(opt))
             result = detect_pointer.detect_dict
+            print(json.dumps(result))
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(result, ensure_ascii=False).encode())
+        elif arr_str[1] == 'detect_wenzi':
+            # 获取文件
+            uname = save_file(self)
+            # 开始检测
+            detect_wenzi.detect_result = ''
+            detect_wenzi.check_requirements(exclude=('tensorboard', 'thop'))
+            opt = detect_wenzi.parse_opt(uname)
+            detect_wenzi.run(**vars(opt))
+            result = detect_wenzi.detect_dict
             print(json.dumps(result))
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
