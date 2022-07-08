@@ -1,4 +1,4 @@
-weights: runs/train/my_wenzi/weights/last.pt
+weights: runs/train/my_wenzi_0/weights/last.pt
 cfg: ''
 data: data\my_wenzidianxuan_train_0.yaml
 hyp: data\hyps\hyp.scratch.yaml
