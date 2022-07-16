@@ -1,8 +1,8 @@
-weights: runs/train/exp4/weights/last.pt
+weights: runs/train/my_robber_0/weights/last.pt
 cfg: ''
-data: data\my_wenzidianxuan_train_0.yaml
+data: data\my_robber_train_0.yaml
 hyp: data\hyps\hyp.scratch.yaml
-epochs: 600
+epochs: 300
 batch_size: 1
 imgsz: 640
 rect: false
@@ -35,4 +35,4 @@ entity: null
 upload_dataset: false
 bbox_interval: -1
 artifact_alias: latest
-save_dir: runs\train\exp4
+save_dir: runs\train\exp3
