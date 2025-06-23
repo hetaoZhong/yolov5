@@ -450,17 +450,19 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
 
 def parse_opt(known=False):
     parser = argparse.ArgumentParser()
+    parser.add_argument('--data', type=str, default=ROOT / 'data/my_wenzidianxuan_train_0.yaml',help='dataset.yaml path')
     parser.add_argument('--weights', type=str, default=ROOT / 'runs/train/my_wenzi_0/weights/best.pt', help='initial weights path')
+    parser.add_argument('--resume', nargs='?', const=True, default=False, help='resume most recent training')
+    # parser.add_argument('--resume', nargs='?', const=True, default="runs/train/my_wenzi_0/weights/last.pt", help='resume most recent training')
+
+
     parser.add_argument('--cfg', type=str, default='', help='model.yaml path')
-    parser.add_argument('--data', type=str, default=ROOT / 'data/my_wenzidianxuan_train_0.yaml', help='dataset.yaml path')
     parser.add_argument('--hyp', type=str, default=ROOT / 'data/hyps/hyp.scratch.yaml', help='hyperparameters path')
     parser.add_argument('--epochs', type=int, default=600)
     # parser.add_argument('--batch-size', type=int, default=16, help='total batch size for all GPUs, -1 for autobatch') 16CPU内存不够
     parser.add_argument('--batch-size', type=int, default=-1, help='total batch size for all GPUs, -1 for autobatch')
     parser.add_argument('--imgsz', '--img', '--img-size', type=int, default=640, help='train, val image size (pixels)')
     parser.add_argument('--rect', action='store_true', help='rectangular training')
-    parser.add_argument('--resume', nargs='?', const=True, default=False, help='resume most recent training')
-    # parser.add_argument('--resume', nargs='?', const=True, default="runs/train/my_wenzi_0/weights/last.pt", help='resume most recent training')
     parser.add_argument('--nosave', action='store_true', help='only save final checkpoint')
     parser.add_argument('--noval', action='store_true', help='only validate final epoch')
     parser.add_argument('--noautoanchor', action='store_true', help='disable AutoAnchor')
@@ -486,7 +488,6 @@ def parse_opt(known=False):
     parser.add_argument('--freeze', nargs='+', type=int, default=[0], help='Freeze layers: backbone=10, first3=0 1 2')
     parser.add_argument('--save-period', type=int, default=-1, help='Save checkpoint every x epochs (disabled if < 1)')
     parser.add_argument('--local_rank', type=int, default=-1, help='DDP parameter, do not modify')
-
     # Weights & Biases arguments
     parser.add_argument('--entity', default=None, help='W&B: Entity')
     parser.add_argument('--upload_dataset', nargs='?', const=True, default=False, help='W&B: Upload data, "val" option')
