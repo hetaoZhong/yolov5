@@ -69,7 +69,7 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
         visualize=False,  # visualize features
         update=False,  # update all models
         project=ROOT / 'runs/detect',  # save results to project/name
-        name='exp',  # save results to project/name
+        name='my_wenzi',  # save results to project/name
         exist_ok=False,  # existing project/name ok, do not increment
         line_thickness=3,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
@@ -194,7 +194,9 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
                 cv2.waitKey(1)  # 1 millisecond
 
             # Save results (image with detections)
+            print("save_img::"+str(save_img))
             if save_img:
+            #if False:
                 if dataset.mode == 'image':
                     cv2.imwrite(save_path, im0)
                 else:  # 'video' or 'stream'
@@ -224,7 +226,7 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
 
 def parse_opt(uname):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'runs/train/my_wenzi_0/weights/best.pt',help='model path(s)')
+    parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'runs/train/my_wenzi_20/weights/best.pt',help='model path(s)')
     # parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='file/dir/URL/glob, 0 for webcam')
     parser.add_argument('--source', type=str, default='D:\\YOLO_TEMP_FILE\\'+uname, help='file/dir/URL/glob, 0 for webcam')
     # parser.add_argument('--source', type=str, default=source, help='file/dir/URL/glob, 0 for webcam')
@@ -245,7 +247,7 @@ def parse_opt(uname):
     parser.add_argument('--visualize', action='store_true', help='visualize features')
     parser.add_argument('--update', action='store_true', help='update all models')
     parser.add_argument('--project', default=ROOT / 'runs/detect', help='save results to project/name')
-    parser.add_argument('--name', default='exp', help='save results to project/name')
+    parser.add_argument('--name', default='my_wenzi', help='save results to project/name')
     parser.add_argument('--exist-ok', action='store_true', help='existing project/name ok, do not increment')
     parser.add_argument('--line-thickness', default=3, type=int, help='bounding box thickness (pixels)')
     parser.add_argument('--hide-labels', default=False, action='store_true', help='hide labels')

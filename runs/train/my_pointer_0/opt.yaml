@@ -21,7 +21,7 @@ optimizer: SGD
 sync_bn: false
 workers: 8
 project: runs\train
-name: exp
+name: my_wenzi_18
 exist_ok: false
 quad: false
 linear_lr: false
