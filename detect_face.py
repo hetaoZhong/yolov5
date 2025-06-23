@@ -185,7 +185,7 @@ def parse_opt(uname, weight_path):
     parser.add_argument('--weights', nargs='+', type=str,
                         default=ROOT / Path('runs/train/' + weight_path + '/weights/best.pt'), help='model path(s)')
     # parser.add_argument('--source', type=str, default=ROOT / 'data/images', help='file/dir/URL/glob, 0 for webcam')
-    parser.add_argument('--source', type=str, default='E:\\YOLO_TEMP_FILE\\' + uname,
+    parser.add_argument('--source', type=str, default='D:\\YOLO_TEMP_FILE\\' + uname,
                         help='file/dir/URL/glob, 0 for webcam')
     parser.add_argument('--data', type=str, default=ROOT / 'data/coco128.yaml', help='(optional) dataset.yaml path')
     parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[640], help='inference size h,w')

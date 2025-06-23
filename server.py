@@ -32,7 +32,7 @@ def save_file(self):
     uname = uuid.uuid1().hex
     uname = uname + '.png'
     image = Image.open(BytesIO(byte_file))
-    image.save('E:/YOLO_TEMP_FILE/'+uname)
+    image.save('D:/YOLO_TEMP_FILE/'+uname)
     return uname
 
 
